@@ -1,0 +1,34 @@
+{% extends 'cars/base.html' %}
+{% block content %}
+<h1>Welcome to CRUD CARS APP</h1>
+<h2>Car List</h2>
+{% if cl %}
+<ul>
+  {% for car in cl %}
+  <p><li>Car_{{car.id}}</li></p>
+  <p><li>Car name:{{car.nickname}}</li></p>
+  <p><li>Car company name : {{car.make}}</li></p>
+  <p><li>Car mileage: {{car.mileage}}</li></p>
+  <p><li>Car comment : {{car.comment}}</li></p>
+  <a class='btn btn-primary' href="{% url 'cars_update' car.id %}">Update</a>
+  <a class='btn btn-danger' href="{% url 'cars_delete' car.id %}">Delete</a>
+  {% endfor %}
+</ul>
+{% else %}
+<p>There are no cars in the DB</p>
+{% endif %}
+<p>
+  {% if ml > 0 %}
+  <a class='btn btn-primary' href="{% url 'cars_create' %}">Add car</a>
+  {% else %}
+  Please add a make before adding a car
+  {% endif%}
+</p>
+<p>
+<a class='btn btn-primary' href="{% url 'make_create'  %}">Add make!</a>
+<a class='btn btn-success' href="{% url 'make_list'  %}">View makes</a>
+</p>
+
+
+
+{% endblock %}

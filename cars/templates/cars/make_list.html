@@ -1,0 +1,23 @@
+{% extends 'cars/base.html '%}
+{% block content %}
+<h1>Make List</h1>
+{% if make_list %}
+<ul>
+{% for make in make_list %}
+<p>
+<li>
+  {{make.name}}
+  <p><a class='btn btn-danger' href="{% url 'make_delete' make.id%}">Delete</a>
+  <a class='btn btn-primary' href="{% url 'make_update' make.id%}">Update</a>
+  <a class='btn btn-success' href="{% url 'cars_create' %}">Add car</a>
+</p>
+</li>
+</p>
+{% endfor %}
+</ul>
+{% else %}
+<p>There is no make in the library!</p>
+{% endif %}
+<p><a class='btn btn-primary' href="{% url 'make_create'%}">Add a make</a></p>
+<p><a class='btn btn-primary' href="{% url 'index' %}">Go back</a></p>
+{% endblock %}
