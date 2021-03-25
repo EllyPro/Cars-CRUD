@@ -17,6 +17,9 @@ class Cars(models.Model):
     mileage = models.PositiveIntegerField(null=False)
     comment = models.TextField(blank=True)
     make = models.ForeignKey('Make',on_delete=models.CASCADE,null=False,related_name='cars')
+    
+    def is_valid_milage(self):
+        return self.mileage >= 0
 
     def __str__(self):
         return self.nickname

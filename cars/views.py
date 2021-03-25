@@ -16,36 +16,36 @@ class MainView(View):
         context = {'ml':make_list,'cl':car_list}
         return render(request,'cars/car_list.html',context)
 
-class MakeListView(LoginRequiredMixin,ListView):
+class MakeListView(ListView):
     model = Make
     context_object_name = 'make_list'
     template_name = 'cars/make_list.html'
 
-class MakeCreateView(LoginRequiredMixin,CreateView):
+class MakeCreateView(CreateView):
     model = Make
     fields ='__all__'
     success_url = reverse_lazy('make_list')
 
-class MakeUpdateView(LoginRequiredMixin,UpdateView):
+class MakeUpdateView(UpdateView):
     model = Make
     fields = "__all__"
     success_url = reverse_lazy('make_list')
 
-class MakeDeleteView(LoginRequiredMixin,DeleteView):
+class MakeDeleteView(DeleteView):
     model = Make
     success_url = reverse_lazy('make_list')
 
 
-class CarsUpdateView(LoginRequiredMixin,UpdateView):
+class CarsUpdateView(UpdateView):
     model = Cars
     fields = '__all__'
     success_url = reverse_lazy('index')
 
-class CarsCreateView(LoginRequiredMixin,CreateView):
+class CarsCreateView(CreateView):
     model = Cars
     fields = '__all__'
     success_url = reverse_lazy('index')
 
-class CarsDeleteView(LoginRequiredMixin,DeleteView):
+class CarsDeleteView(DeleteView):
     model = Cars
     success_url = reverse_lazy('index')
